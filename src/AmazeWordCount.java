@@ -16,18 +16,11 @@ public class AmazeWordCount {
   public static class TokenizerMapper extends Mapper<Object, Text, Text, IntWritable> {
 
     private final static IntWritable one = new IntWritable(1);
-    // private final HashMap<String, int> counts = new HashMap<String, int>();
     private Text word = new Text();
 
     public void map(Object key, Text value, Context context) throws IOException, InterruptedException {
       StringTokenizer itr = new StringTokenizer(value.toString());
       while(itr.hasMoreTokens()) {
-        // String word = itr.nextToken();
-        // int currentCount = 1;
-        // if (counts.containsKey(word)) {
-          // currentCount = counts.get(word) + 1;
-        // }
-        // counts.put(word, currentCount);
         String token = itr.nextToken().toLowerCase();
         token = token.replaceAll("[^a-zA-Z]", "");
         if (token.contains("amaz") || token.contains("wonder") || token.contains("marvel")) {
